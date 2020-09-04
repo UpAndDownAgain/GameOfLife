@@ -34,7 +34,7 @@ public class Main {
     public static void printField(boolean[][] field, int fieldSize){
         for(var row : field){
             for(var element : row){
-                System.out.print( element ? "0" : " " );
+                System.out.print( element ? "0" : "-" );
             }
             System.out.println();
         }

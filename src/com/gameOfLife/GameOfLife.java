@@ -100,13 +100,6 @@ public class GameOfLife {
 
             int position = validatePosition(x + i);
 
-           if(position < 0){
-                position = fieldSize;
-           }
-           if(position > fieldSize - 1) {
-               position = 0;
-           }
-
             if (currentGeneration[position][y]) {
                 ++counter;
             }
