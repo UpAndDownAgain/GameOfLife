@@ -101,6 +101,7 @@ public class GameOfLife {
             int position = validatePosition(x + i);
 
             if (currentGeneration[position][y]) {
+                if(position == x) continue;
                 ++counter;
             }
         }
@@ -109,6 +110,7 @@ public class GameOfLife {
             int position = validatePosition(y + i);
 
             if (currentGeneration[x][position]) {
+                if(position == y) continue;
                 ++counter;
             }
         }
@@ -122,7 +124,7 @@ public class GameOfLife {
         if(position < 0){
             position = fieldSize-1;
         }
-        if(position > fieldSize-1){
+        if(position >= fieldSize){
             position = 0;
         }
 
