@@ -7,6 +7,7 @@ public class GameOfLife {
     private static int DEFAULT_FIELD_SIZE = 10;
     final private int fieldSize;
     private boolean[][] currentGeneration;
+    private int liveCellCount = -1;
 
 
 
@@ -27,6 +28,24 @@ public class GameOfLife {
 
     public int getFieldSize(){
         return this.fieldSize;
+    }
+
+    public int getLiveCellCount(){
+
+        if(liveCellCount == -1){
+
+            liveCellCount = 0;
+
+            for(var row : currentGeneration){
+                for(var cell : row){
+                    if(cell){
+                        ++liveCellCount;
+                    }
+                }
+            }
+        }
+
+        return liveCellCount;
     }
 
     public void evolve(){
@@ -60,6 +79,7 @@ public class GameOfLife {
             }
         }
         currentGeneration = newGeneration;
+        liveCellCount = -1;
     }
 
     private void generateField(int fieldSize){
@@ -104,7 +124,7 @@ public class GameOfLife {
         return counter;
     }
 
-    public int validatePosition(int position){
+    private int validatePosition(int position){
 
         if(position < 0){
             position = fieldSize-1;
