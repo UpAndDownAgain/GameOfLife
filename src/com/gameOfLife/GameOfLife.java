@@ -60,26 +60,17 @@ public class GameOfLife {
         boolean[][] newGeneration = new boolean[fieldSize][fieldSize];
 
         for(int i = 0; i < fieldSize; ++i){
-            for(int j = 0; j < fieldSize; ++j){
-
-                int liveNeighbours = countLiveNeighbours(i, j);
-                boolean isAlive = false;
-
-                //cell is dead and has exactly 3 neighbours -> cell is reborn
-                if( !currentGeneration[i][j] && liveNeighbours == 3 ){
-                    isAlive = true;
+            for(int j = 0; j < fieldSize; ++j) {
+                if(currentGeneration[i][j]){
+                    int neighboursCount = countLiveNeighbours(i, j);
+                    newGeneration[i][j] = neighboursCount >= 2 && neighboursCount <= 3;
+                }else{
+                    newGeneration[i][j] = countLiveNeighbours(i, j) == 3;
                 }
-
-                //cell is alive and has 2 or 3 neighbours -> cell survives
-                else if( currentGeneration[i][j] && (liveNeighbours == 2 || liveNeighbours == 3) ){
-                    isAlive = true;
-                }
-
-                newGeneration[i][j] = isAlive;
             }
         }
-        currentGeneration = newGeneration;
         liveCellCount = -1;
+        currentGeneration = newGeneration;
     }
 
     private void generateField(int fieldSize){
@@ -96,42 +87,16 @@ public class GameOfLife {
     private int countLiveNeighbours(int x, int y){
         int counter = 0;
 
-        for(int i = -1; i <= 1; ++i) {
-
-            int position = validatePosition(x + i);
-
-            if (currentGeneration[position][y]) {
-                if(position == x) continue;
-                ++counter;
+        for(int i = -1; i < 2; ++i) {
+            for(int j = -1; j < 2; ++j){
+                if(i == 0 && j == 0){
+                    continue;
+                }
+                if(currentGeneration[(fieldSize + x + i)% fieldSize][(fieldSize + y + i) % fieldSize]){
+                    ++counter;
+                }
             }
         }
-
-        for(int i = -1; i <= 1; ++i) {
-            int position = validatePosition(y + i);
-
-            if (currentGeneration[x][position]) {
-                if(position == y) continue;
-                ++counter;
-            }
-        }
-
-
         return counter;
     }
-
-    private int validatePosition(int position){
-
-        if(position < 0){
-            position = fieldSize-1;
-        }
-        if(position >= fieldSize){
-            position = 0;
-        }
-
-        return position;
-    }
-
-
-
-
 }
