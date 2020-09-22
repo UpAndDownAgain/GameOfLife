@@ -13,12 +13,12 @@ public class Board {
 
     public Board(int fieldSize){
         this.fieldSize = fieldSize;
-        generateField(fieldSize);
+        initializeNewField();
     }
 
     public Board(){
         this.fieldSize = DEFAULT_FIELD_SIZE;
-        generateField(this.fieldSize);
+        initializeNewField();
     }
 
 
@@ -72,7 +72,7 @@ public class Board {
         currentGeneration = newGeneration;
     }
 
-    private void generateField(int fieldSize){
+    public void initializeNewField(){
         Random rng = new Random();
         currentGeneration = new boolean[fieldSize][fieldSize];
 

@@ -71,6 +71,10 @@ public class GameOfLifeGUI extends JFrame {
         panel.add(resetButton);
     }
 
+    public void setReset(boolean b){
+        reset = b;
+    }
+
     public void setGenerationLabel(int count){
         GenerationLabel.setText("Generation #" + count);
     }
