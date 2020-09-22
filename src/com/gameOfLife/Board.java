@@ -2,7 +2,7 @@ package com.gameOfLife;
 
 import java.util.Random;
 
-public class GameOfLife {
+public class Board {
 
     private static int DEFAULT_FIELD_SIZE = 10;
     final private int fieldSize;
@@ -11,12 +11,12 @@ public class GameOfLife {
 
 
 
-    public GameOfLife(int fieldSize){
+    public Board(int fieldSize){
         this.fieldSize = fieldSize;
         generateField(fieldSize);
     }
 
-    public GameOfLife(){
+    public Board(){
         this.fieldSize = DEFAULT_FIELD_SIZE;
         generateField(this.fieldSize);
     }
@@ -48,7 +48,7 @@ public class GameOfLife {
         return liveCellCount;
     }
 
-    public void evolve(){
+    public void generateNewGeneratio0n(){
 
         /*
         cell is alive and has 2 or 3 neighbours -> cell survives
@@ -69,7 +69,6 @@ public class GameOfLife {
                 }
             }
         }
-        liveCellCount = -1;
         currentGeneration = newGeneration;
     }
 

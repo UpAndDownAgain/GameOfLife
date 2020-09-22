@@ -22,20 +22,20 @@ public class Main {
 
         evolutionCount = 10;
 
-        GameOfLife gameOfLife = new GameOfLife(fieldSize);
-        GUI gui = new GUI();
+        Board board = new Board(fieldSize);
+        GameOfLifeGUI gameOfLifeGui = new GameOfLifeGUI();
 
 
         int i = 0;
         do{
             ++i;
-            printField(gameOfLife.getCurrentGeneration(), gameOfLife.getFieldSize());
-            System.out.println("Cells Alive = " + gameOfLife.getLiveCellCount());
+            printField(board.getCurrentGeneration(), board.getFieldSize());
+            System.out.println("Cells Alive = " + board.getLiveCellCount());
 
-            gameOfLife.evolve();
+            board.generateNewGeneratio0n();
 
-            gui.setAliveLabel(gameOfLife.getLiveCellCount());
-            gui.setGenerationLabel(i);
+            gameOfLifeGui.setAliveLabel(board.getLiveCellCount());
+            gameOfLifeGui.setGenerationLabel(i);
 
             System.out.println();
         }while(i < evolutionCount);

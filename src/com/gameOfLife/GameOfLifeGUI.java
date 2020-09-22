@@ -3,13 +3,13 @@ package com.gameOfLife;
 import javax.swing.*;
 import java.awt.*;
 
-public class GUI extends JFrame {
+public class GameOfLifeGUI extends JFrame {
 
     JLabel GenerationLabel;
     JLabel AliveLabel;
     JPanel panel;
 
-    public GUI(){
+    public GameOfLifeGUI(){
         super("Game Of Life");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
