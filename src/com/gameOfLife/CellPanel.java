@@ -15,10 +15,11 @@ public class CellPanel extends JPanel {
         this.setLayout(new GridLayout(size, size, 1, 1));
         this.cellArray = new Cell[size][size];
 
-        for(var row : cellArray){
-            for(var cell : row){
-                cell = new Cell();
-                this.add(cell);
+        for(int i = 0; i < size; ++i){
+            for(int j = 0; j < size; ++j){
+
+                cellArray[i][j] = new Cell();
+                this.add(cellArray[i][j]);
             }
         }
     }
