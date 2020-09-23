@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Board {
 
-    private static int DEFAULT_FIELD_SIZE = 10;
     final private int fieldSize;
     private boolean[][] currentGeneration;
     private int liveCellCount = -1;
@@ -17,7 +16,7 @@ public class Board {
     }
 
     public Board(){
-        this.fieldSize = DEFAULT_FIELD_SIZE;
+        this.fieldSize = 10;
         initializeNewField();
     }
 

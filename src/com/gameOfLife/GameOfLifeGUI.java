@@ -9,7 +9,8 @@ public class GameOfLifeGUI extends JFrame {
 
     JLabel GenerationLabel;
     JLabel AliveLabel;
-    JPanel panel;
+    JPanel statsPanel;
+    JPanel buttonPanel;
     CellPanel cellPanel;
     JToggleButton pauseButton;
     JButton resetButton;
@@ -25,9 +26,13 @@ public class GameOfLifeGUI extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
-        panel = new JPanel();
-        panel.setName("Stats panel");
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        statsPanel = new JPanel();
+        statsPanel.setName("Stats panel");
+        statsPanel.setLayout(new BoxLayout(statsPanel, BoxLayout.Y_AXIS));
+
+        buttonPanel = new JPanel();
+        buttonPanel.setName("Button panel");
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 
         GenerationLabel = new JLabel();
         GenerationLabel.setName("GenerationLabel");
@@ -62,13 +67,14 @@ public class GameOfLifeGUI extends JFrame {
 
         setLayout(new BorderLayout());
 
-        add(panel, BorderLayout.PAGE_START);
+        add(buttonPanel, BorderLayout.PAGE_START);
+        add(statsPanel, BorderLayout.PAGE_END);
         add(cellPanel, BorderLayout.CENTER);
 
-        panel.add(GenerationLabel);
-        panel.add(AliveLabel);
-        panel.add(pauseButton);
-        panel.add(resetButton);
+        statsPanel.add(GenerationLabel);
+        statsPanel.add(AliveLabel);
+        buttonPanel.add(pauseButton);
+        buttonPanel.add(resetButton);
     }
 
     public void setReset(boolean b){
