@@ -31,20 +31,6 @@ public class Board {
     }
 
     public int getLiveCellCount(){
-
-        if(liveCellCount == -1){
-
-            liveCellCount = 0;
-
-            for(var row : currentGeneration){
-                for(var cell : row){
-                    if(cell){
-                        ++liveCellCount;
-                    }
-                }
-            }
-        }
-
         return liveCellCount;
     }
 
@@ -58,6 +44,7 @@ public class Board {
          */
 
         boolean[][] newGeneration = new boolean[fieldSize][fieldSize];
+        liveCellCount = 0;
 
         for(int i = 0; i < fieldSize; ++i){
             for(int j = 0; j < fieldSize; ++j) {
@@ -66,6 +53,9 @@ public class Board {
                     newGeneration[i][j] = neighboursCount >= 2 && neighboursCount <= 3;
                 }else{
                     newGeneration[i][j] = countLiveNeighbours(i, j) == 3;
+                }
+                if(newGeneration[i][j]){
+                    ++liveCellCount;
                 }
             }
         }
